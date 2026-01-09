@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Longest Substring Demo</title>
+</head>
+<body>
+
+<h2>Longest Substring Calculator</h2>
+
+<input type="text" id="inputText" placeholder="Enter string" />
+<button id="submitBtn" onclick="calculate()">Submit</button>
+
+<p>Result: <span id="resultValue"></span></p>
+
+<script>
+function calculate() {
+    const input = document.getElementById("inputText").value;
+    let maxLen = 0;
+
+    for (let i = 0; i < input.length; i++) {
+        let seen = new Set();
+        for (let j = i; j < input.length; j++) {
+            if (seen.has(input[j])) break;
+            seen.add(input[j]);
+            maxLen = Math.max(maxLen, seen.size);
+        }
+    }
+
+    document.getElementById("resultValue").innerText = maxLen;
+}
+</script>
+
+</body>
+</html>
